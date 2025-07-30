@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thống kê văn bản</title>
+    <script>
+        function Statistic() {
+            var s = document.getElementById("txts").value;
+            var arr = s.split(" ");//tach de dem so tu
+            var i, words = 0;
+            //dem so tu
+            for (i = 0; i < arr.length; i++) {
+                if (arr[i].trim() != "") words++;
+            }
+
+
+            var arrkq = [];//mảng chứa kết quả
+            for (i = 0; i <= 128; i++) {
+                arrkq[i] = 0;
+            }
+
+            var kq = "Characters: " + s.length + "<br>" + "Words: " + words + "<br>";
+            for (i = 0; i < s.length; i++) {
+                if (s[i] >= 'a' && s[i] <= 'z')//a->z 
+                    arrkq[s.charCodeAt(i) - 32]++;
+                else//cac ki tu khac 
+                    arrkq[s.charCodeAt(i)]++;
+            }
+            //duyet mang arrKQ in so lieu thong ke 
+            for (i = 0; i < arrkq.length; i++) {
+                if (arrkq[i] > 0) {
+                    kq += "Character '" + String.fromCharCode(i) + "': " + arrkq[i] + "<br>";
+                }
+            }
+
+            document.getElementById("kq").innerHTML = kq;
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <h2>Thống kê văn bản</h2>
+    <textarea id="txts" placeholder="Nhập văn bản tại đây..."></textarea><br>
+    <button onclick="Statistic()">Phân tích</button>
+    <div id="kq"></div>
+</body>
+
+</html>
