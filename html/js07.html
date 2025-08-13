@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script>
+        function DangKy(){
+            var ten = document.forms.reg["txtTen"].value;
+            var mk = document.forms.reg["txtPass"].value;
+            var ns = document.forms.reg["txtNgaySinh"].value;
+            var realDate = new Date(ns);
+            var gt = document.forms.reg["gt"].value;
+            var qt = document.forms.reg["qt"].value;
+
+            document.forms.reg["thongtin"].value="chao mung " + ten + "\nban la "+ gt+
+            "\nmat khau ban co "+ mk.length + " ky tu"+"\nban sinh ngay "+realDate.getDate()+"/"+(realDate.getMonth()+1)+"/"+realDate.getFullYear()+
+            "\nvan de ban quan tam la "+qt ;
+
+            return false;
+
+        }
+    </script>
+</head>
+<body>
+    <form id="reg" onsubmit="return DangKy()">
+        <h1>Dang ky thanh vien</h1>
+        <p>
+            <label>ten dang nhap</label>
+            <input type="text" name="txtTen" required>
+        </p>
+        <p>
+            <label>mat khau</label>
+            <input type="password" name="txtPass" required>
+        </p>
+        <p>
+            <label>ngay sinh</label>
+            <input type="date" name="txtNgaySinh" required>
+        </p>
+        <p>
+            <label>gioi tinh</label>
+            <input type="radio" name="gt" value="Nam" checked>Nam
+            <input type="radio" name="gt" value="Nu" >Nu
+        </p>
+        <p>
+            <label>Van de ban quan tam</label>
+            <select name="qt">
+                <option value="Kinh te">Kinh te</option>
+                <option value="The thao">The thao</option>
+                <option value="Van hoc nghe thuat">Van hoc nghe thuat</option>
+            </select>
+        </p>
+        <p>
+            <input type="submit" value="Dang ky" >
+            <input type="reset" value="Huy" >
+        </p>
+        <p>
+            <textarea name="thongtin" rows="6" cols="50"></textarea>
+        </p>
+    </form>
+</body>
+</html>

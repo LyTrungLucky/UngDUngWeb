@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script>
+        function changeColor(){
+            var bkcolor=document.getElementById("bkcolor").value;
+            var txtColor=document.getElementById("textColor").value;
+
+            document.getElementById("title").innerHTML = document.getElementById("txtInput").value;
+            document.getElementById("divText").style.backgroundColor = bkcolor;
+            document.getElementById("divText").style.color = txtColor;
+
+        }
+    </script>
+</head>
+<body>
+    <div id="divText" style="width: 300px; height: 200px;  background-color: aqua;">
+        <h1 id="title">welcom</h1>
+    </div>
+    <p>
+        nhap noi dung <input type="text" id="txtInput" autofocus value="welcom" size="50">
+    </p>
+    <p>
+        mau nen <input type="color" id="bkcolor">
+
+    </p>
+    <p>
+        mau chu <input type="color" id="textColor" value="#ff0000">
+    </p>
+    <input type="button" onclick="changeColor()" value="thuc hien">
+</body>
+</html>

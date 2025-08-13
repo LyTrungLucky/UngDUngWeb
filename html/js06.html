@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phép Toán Cộng Trừ Nhân Chia</title>
+</head>
+<body>
+  <h2>Thực hiện phép toán với 2 số</h2>
+
+  <form name="calculator-form">
+    <label for="num1">Số 1:</label>
+    <input type="number" name="num1" required><br><br>
+
+    <label for="num2">Số 2:</label>
+    <input type="number" name="num2" required><br><br>
+
+    <label>Chọn phép toán:</label><br>
+    <input type="radio" name="operation" value="add" checked>
+    <label for="add">Cộng</label><br>
+    <input type="radio" name="operation" value="subtract">
+    <label for="subtract">Trừ</label><br>
+    <input type="radio" name="operation" value="multiply">
+    <label for="multiply">Nhân</label><br>
+    <input type="radio" name="operation" value="divide">
+    <label for="divide">Chia</label><br><br>
+
+    <button type="button" onclick="calculate()">Tính</button>
+  </form>
+
+  <h3>Kết quả:</h3>
+  <p id="result"></p>
+
+  <script>
+    function calculate() {
+      // Lấy giá trị từ các input trong form sử dụng document.form
+      const num1 = parseFloat(document.forms["calculator-form"]["num1"].value);
+      const num2 = parseFloat(document.forms["calculator-form"]["num2"].value);
+
+      if (isNaN(num1) || isNaN(num2)) {
+        alert("Vui lòng nhập đầy đủ hai số hợp lệ!");
+        return;
+      }
+
+      // Lấy loại phép toán đã chọn
+      const operation = document.forms["calculator-form"]["operation"].value;
+      
+      let result;
+
+      // Thực hiện phép toán theo lựa chọn
+      switch (operation) {
+        case 'add':
+          result = num1 + num2;
+          break;
+        case 'subtract':
+          result = num1 - num2;
+          break;
+        case 'multiply':
+          result = num1 * num2;
+          break;
+        case 'divide':
+          if (num2 === 0) {
+            result = "Không thể chia cho 0";
+          } else {
+            result = num1 / num2;
+          }
+          break;
+        default:
+          result = "Chưa chọn phép toán";
+      }
+
+      // Hiển thị kết quả
+      document.getElementById('result').innerHTML = `Kết quả: ${result}`;
+    }
+  </script>
+</body>
+</html>
